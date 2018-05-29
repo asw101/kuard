@@ -6,7 +6,7 @@
 
 ```
 kubectl run --restart=Never --image=gcr.io/kuar-demo/kuard-amd64:1 kuard
-kubectl port-forward kuard 8080:8080
+kubectl port-forward $(kubectl get pods -l run=kuard -o=jsonpath="{.items[0].metadata.name}") 8080:8080
 ```
 
 Open your browser to [http://localhost:8080](http://localhost:8080).
